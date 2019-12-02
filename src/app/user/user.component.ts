@@ -11,7 +11,7 @@ export class UserComponent implements OnInit {
   username = new FormControl("");
   useremail = new FormControl("");
   userpassword = new FormControl("");
-  useraddress = new FormControl("");
+  userstreet = new FormControl("");
   userpostalcode = new FormControl("");
   usercity = new FormControl("");
   user: User = new User();
@@ -24,8 +24,8 @@ export class UserComponent implements OnInit {
     this.user.name = this.username.value;
     this.user.email = this.useremail.value;
     this.user.password = this.userpassword.value;
-    this.user.address = this.useraddress.value;
-    this.user.postalCode = this.userpostalcode.value;
-    this.user.city = this.usercity.value;
+    this.user.address.street = this.userstreet.value;
+    this.user.address.postalCode = this.userpostalcode.value;
+    this.user.address.city = this.usercity.value;
   }
 }
