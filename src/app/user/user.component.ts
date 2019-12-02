@@ -1,6 +1,12 @@
 import { User } from "./../models/user";
 import { Component, OnInit } from "@angular/core";
-import { FormControl, FormGroup, FormBuilder } from "@angular/forms";
+import {
+  FormControl,
+  FormGroup,
+  FormBuilder,
+  Validators
+} from "@angular/forms";
+import { emailValidator } from "../directives/email-validatoir";
 
 @Component({
   selector: "app-user",
@@ -11,7 +17,7 @@ export class UserComponent implements OnInit {
   userForm = this.fb.group({
     username: [""],
     credentials: this.fb.group({
-      useremail: [""],
+      useremail: ["", [Validators.required, emailValidator]],
       userpassword: [""]
     }),
     userstreet: [""],
