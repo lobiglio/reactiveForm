@@ -1,43 +1,47 @@
-<div>
-  <label>
-    Username:
-    <input type="text" [formControl]="username" />
-  </label>
-</div>
-<div>
-  <label>
-    Email:
-    <input type="text" [formControl]="useremail" />
-  </label>
-</div>
-<div>
-  <label>
-    Password:
-    <input type="password" [formControl]="userpassword" />
-  </label>
-</div>
-<div>
-  <label>
-    Address:
-    <input type="text" [formControl]="userstreet" />
-  </label>
-</div>
-<div>
-  <label>
-    Postal code:
-    <input type="number" [formControl]="userpostalcode" />
-  </label>
-</div>
-<div>
-  <label>
-    City:
-    <input type="text" [formControl]="usercity" />
-  </label>
-</div>
-<button (click)="createUser()">Inscription</button>
-<div *ngIf="user.name != ''">
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label>
+      Username:
+      <input type="text" formControlName="username" />
+    </label>
+  </div>
+  <div formGroupName="credentials">
+    <div>
+      <label>
+        Email:
+        <input type="text" formControlName="useremail" />
+      </label>
+    </div>
+    <div>
+      <label>
+        Password:
+        <input type="password" formControlName="userpassword" />
+      </label>
+    </div>
+  </div>
+  <div>
+    <label>
+      Address:
+      <input type="text" formControlName="userstreet" />
+    </label>
+  </div>
+  <div>
+    <label>
+      Postal code:
+      <input type="number" formControlName="userpostalcode" />
+    </label>
+  </div>
+  <div>
+    <label>
+      City:
+      <input type="text" formControlName="usercity" />
+    </label>
+  </div>
+  <button type="submit" [disabled]="!userForm.valid">Submit</button>
+</form>
+<!-- <div *ngIf="user.name != ''">
   <h2>{{ user.name }}</h2>
   <p>{{ user.email }}</p>
-  <p>{{ user.address }}</p>
-  <p>{{ user.postalCode }}, {{ user.city }}</p>
-</div>
+  <p>{{ user.address.street }}</p>
+  <p>{{ user.address.postalCode }}, {{ user.address.city }}</p>
+</div> -->
